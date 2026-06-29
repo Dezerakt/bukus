@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    networks:
+      - default_network
+
+  postgres:
+    image: postgres:17
+    restart: unless-stopped
+    shm_size: 128mb
+    networks:
+      - default_network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DATABASE: ${PG_DB}
+
+networks:
+  default_network:
+
+volumes:
+  db_data:
+    name: bukus_db
