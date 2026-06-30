@@ -1,20 +1,15 @@
 package v1
 
 import (
-	"Bukus/internal/entity"
-	"github.com/gofiber/fiber/v3"
+	"bukus/internal/entity"
 	"net/http"
+
+	"github.com/gofiber/fiber/v3"
 )
 
 func (obj *V1) store(ctx fiber.Ctx) error {
-	uc := obj.uc.Book
 
-	userID, ok := ctx.Locals("userID").(string)
-	if !ok {
-		return errorResponse(ctx, http.StatusUnauthorized, "unauthorized")
-	}
-
-	err := uc.Store(ctx.RequestCtx(), userID, entity.Book{})
+	err := obj.bookUC.Store(ctx.RequestCtx(), entity.Book{})
 	if err != nil {
 		obj.l.Error(err, "restapi - v1 - history")
 

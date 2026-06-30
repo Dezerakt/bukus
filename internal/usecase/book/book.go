@@ -1,8 +1,8 @@
 package book
 
 import (
-	"Bukus/internal/entity"
-	"Bukus/internal/repo"
+	"bukus/internal/entity"
+	"bukus/internal/repo"
 	"context"
 )
 
@@ -17,6 +17,7 @@ func New(r repo.BookRepo) *UseCase {
 	}
 }
 
-func (obj *UseCase) Store(ctx context.Context, userID string, b entity.Book) error {
+func (obj *UseCase) Store(ctx context.Context, b entity.Book) error {
+
 	return nil
 }

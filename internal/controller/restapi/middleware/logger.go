@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"Bukus/pkg/logger"
+	"bukus/pkg/logger"
 	"github.com/gofiber/fiber/v3"
 	"strconv"
 	"strings"

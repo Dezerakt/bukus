@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Bukus/config"
-	"Bukus/internal/app"
+	"bukus/config"
+	"bukus/internal/app"
 	"log"
 )
 

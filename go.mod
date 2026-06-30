@@ -1,4 +1,4 @@
-module Bukus
+module bukus
 
 go 1.25.0
 

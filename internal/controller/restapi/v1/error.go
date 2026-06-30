@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"Bukus/internal/controller/restapi/v1/response"
+	"bukus/internal/controller/restapi/v1/response"
 	"github.com/gofiber/fiber/v3"
 )
 

@@ -1,9 +1,10 @@
 package v1
 
 import (
-	"Bukus/internal/usecase"
-	"Bukus/pkg/jwt"
-	"Bukus/pkg/logger"
+	"bukus/internal/usecase"
+	"bukus/pkg/jwt"
+	"bukus/pkg/logger"
+
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v3"
 )
@@ -11,9 +12,9 @@ import (
 // NewRoutes -.
 func NewRoutes(apiV1Group fiber.Router, uc *usecase.Container, jwtManager *jwt.Manager, l logger.Interface) {
 	r := &V1{
-		uc: uc,
-		l:  l,
-		v:  validator.New(validator.WithRequiredStructEnabled()),
+		bookUC: uc.Book,
+		l:      l,
+		v:      validator.New(validator.WithRequiredStructEnabled()),
 	}
 
 	// Public routes

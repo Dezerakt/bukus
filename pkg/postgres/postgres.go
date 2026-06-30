@@ -2,7 +2,7 @@
 package postgres
 
 import (
-	"Bukus/config"
+	"bukus/config"
 	"context"
 	"fmt"
 	"log"

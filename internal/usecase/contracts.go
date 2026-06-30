@@ -1,12 +1,12 @@
 package usecase
 
 import (
-	"Bukus/internal/entity"
+	"bukus/internal/entity"
 	"context"
 )
 
 type (
 	Book interface {
-		Store(ctx context.Context, userID string, b entity.Book) error
+		Store(ctx context.Context, b entity.Book) error
 	}
 )

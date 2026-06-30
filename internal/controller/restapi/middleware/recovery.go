@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"Bukus/pkg/logger"
+	"bukus/pkg/logger"
 	"fmt"
 	"github.com/gofiber/fiber/v3"
 	fiberRecover "github.com/gofiber/fiber/v3/middleware/recover"

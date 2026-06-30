@@ -1,12 +1,12 @@
 package restapi
 
 import (
-	"Bukus/config"
-	"Bukus/internal/controller/restapi/middleware"
-	v1 "Bukus/internal/controller/restapi/v1"
-	"Bukus/internal/usecase"
-	"Bukus/pkg/jwt"
-	"Bukus/pkg/logger"
+	"bukus/config"
+	"bukus/internal/controller/restapi/middleware"
+	v1 "bukus/internal/controller/restapi/v1"
+	"bukus/internal/usecase"
+	"bukus/pkg/jwt"
+	"bukus/pkg/logger"
 	"fmt"
 	"github.com/gofiber/fiber/v3"
 	"net/http"
