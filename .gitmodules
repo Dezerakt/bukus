@@ -3,4 +3,4 @@
 	url = https://github.com/Dezerakt/bukus_back.git
 [submodule "front"]
 	path = front
-	url = https://github.com/Dezerakt/bukus_web.git
+	url = https://github.com/Dezerakt/bukus_front.git

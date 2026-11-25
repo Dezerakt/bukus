@@ -1,0 +1,88 @@
+services:
+  migrate:
+    build:
+      context: ./back
+    container_name: migrate
+    command: ["migrate"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - ./back/.env
+    networks:
+      - default_network
+
+  app:
+    container_name: app
+    build:
+      context: ./back
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    env_file:
+      - ./back/.env
+    networks:
+      - default_network
+
+  web:
+    container_name: web
+    build:
+      context: ./front
+      args:
+        VITE_API_URL: http://localhost:8080
+    ports:
+      - "3000:80"
+    depends_on:
+      - app
+    networks:
+      - default_network
+
+  postgres:
+    container_name: postgres
+    image: postgres:17
+    restart: unless-stopped
+    shm_size: 128mb
+    ports:
+      - "5432:5432"
+    networks:
+      - default_network
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: bukus
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d bukus"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:8.14
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8888:80"
+    networks:
+      - default_network
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin/data
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+
+networks:
+  default_network:
+
+volumes:
+  pgadmin_data:
+    name: bukus_pgadmin
+  db_data:
+    name: bukus_db
